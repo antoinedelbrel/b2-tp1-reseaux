@@ -40,4 +40,53 @@ tcp   LISTEN  0       128                       [::]:22              [::]:*     
 * Pour afficher l'état du firewall on fait `firewall-cmd --state`  
 
 
+## II. Edit configuration  
+
+### 1. Configuration carte réseau 
+
+* enp0s8 est bien configuré : 
+```root@192.168.125.2's password:
+Last login: Wed Oct  2 08:05:40 2019
+[root@localhost ~]# ipa
+-bash: ipa: command not found
+[root@localhost ~]# ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:d9:26:d6 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 85239sec preferred_lft 85239sec
+    inet6 fe80::c5ef:e3b3:3aaf:a441/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:fe:6c:83 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.125.2/24 brd 192.168.125.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fefe:6c83/64 scope link
+       valid_lft forever preferred_lft forever
+```
+* Le nouveau réseau est crée :   
+```3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:fe:6c:83 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.125.2/24 brd 192.168.125.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fefe:6c83/64 scope link
+       valid_lft forever preferred_lft forever
+4: enp0s9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:e4:87:65 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.246.2/24 brd 192.168.246.255 scope global noprefixroute enp0s9
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fee4:8765/64 scope link
+       valid_lft forever preferred_lft forever
+```  
+
+### 2. Serveur SSH  
+
+
+
+
 
